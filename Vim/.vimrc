@@ -1,12 +1,11 @@
 nnoremap <F2> :vsplit<CR>
-
 nnoremap <F3> :TlistToggle<CR>
-
 nnoremap <F4> :NERDTree<CR>
 
 map <Tab><Tab> <C-W>w
 
 map <silent> <F4> :NERDTreeToggle<CR>
+
 
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
@@ -29,7 +28,7 @@ set hlsearch
 
 set smartindent
 
-set tw=80
+" set tw=80
 set colorcolumn=80
 
 set virtualedit=block
@@ -44,6 +43,9 @@ syntax on
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 """syntastic plugin"""
+set laststatus=2
+set statusline+=%f
+set statusline+=\ -\
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -52,6 +54,18 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0 
 let g:syntastic_check_on_open = 0 
 let g:syntastic_check_on_wq = 0 
+
+" nerd tree
+let NERDTreeIgnore=['.DS_Store']
+let NERDTreeShowBookmarks=0         "show bookmarks on startup
+let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
+let NERDTreeShowLineNumbers=0
+let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
 
 """fuzzyfinder"""
 set rtp+=~/.fzf
@@ -80,4 +94,14 @@ endif
 set tags=./.tags,.tags;$HOME/Work/
 
 set nocompatible              " be iMproved, required
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'hari-rangarajan/CCTree'
+call vundle#end()            " required
+"filetype plugin indent on    " required
 filetype on
+
