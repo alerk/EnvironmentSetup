@@ -1,6 +1,7 @@
 nnoremap <F2> :vsplit<CR>
 nnoremap <F3> :TlistToggle<CR>
 nnoremap <F4> :NERDTree<CR>
+nnoremap <F5> :CCTreeKeyToggleWindow<CR>
 
 map <Tab><Tab> <C-W>w
 
@@ -39,7 +40,7 @@ execute pathogen#infect()
 
 colo molokai
 syntax on
-
+autocmd VimEnter * if filereadable('cscope.out') | CCTreeLoadDB cscope.out | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 """syntastic plugin"""
@@ -59,8 +60,8 @@ let g:syntastic_check_on_wq = 0
 let NERDTreeIgnore=['.DS_Store']
 let NERDTreeShowBookmarks=0         "show bookmarks on startup
 let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
-let NERDTreeShowLineNumbers=0
-let NERDTreeMinimalUI = 1
+let NERDTreeShowLineNumbers=1
+" let NERDTreeMinimalUI = 1
 " let NERDTreeDirArrows = 1
 
 " Auto indent pasted text
@@ -94,14 +95,14 @@ endif
 set tags=./.tags,.tags;$HOME/Work/
 
 set nocompatible              " be iMproved, required
-filetype off
+"filetype off
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'hari-rangarajan/CCTree'
-call vundle#end()            " required
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'hari-rangarajan/CCTree'
+"call vundle#end()            " required
 "filetype plugin indent on    " required
 filetype on
 
