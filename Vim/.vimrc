@@ -50,9 +50,9 @@ set virtualedit=block
 syntax enable
 
 execute pathogen#infect()
-
-colo molokai
+filetype off
 syntax on
+colo molokai
 autocmd VimEnter * if filereadable('cscope.out') | CCTreeLoadDB cscope.out | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -117,5 +117,5 @@ set nocompatible              " be iMproved, required
 "Plugin 'hari-rangarajan/CCTree'
 "call vundle#end()            " required
 "filetype plugin indent on    " required
-filetype on
+filetype plugin indent on
 
