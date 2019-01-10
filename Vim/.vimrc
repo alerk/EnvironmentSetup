@@ -47,9 +47,8 @@ set colorcolumn=80
 
 set virtualedit=block
 
-syntax enable
-
 execute pathogen#infect()
+syntax enable
 filetype off
 syntax on
 colo molokai
@@ -64,6 +63,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:statline_syntastic = 0
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0 
 let g:syntastic_check_on_open = 0 
